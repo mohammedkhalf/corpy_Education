@@ -4,18 +4,18 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-use App\OrderDetails;
-
 class Order extends Model
 {
-   protected $table ="orders";
+    protected $table = "orders";
 
-   protected $fillable = ['customer_id' , 'payment_id' , 'order_total' , 'order_stauts' , 'course_image'];
+    protected $primaryKey = 'order_id';
 
-   public function order_detail ()
+    protected $fillable = [ 'order_id' ,'customer_name', 'customer_phone' ,'order_code', 'payment_id' , 'order_total' , 'order_stauts'];
+
+
+   public function order_details ()
    {
-   	   return  $this->hasMany('App\OrderDetails' ,  'order_id');
-   }
-
+   	  return $this->hasMany('\App\OrderDetails' , 'order_id');
+   }  
 
 }

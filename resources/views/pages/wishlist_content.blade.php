@@ -54,7 +54,10 @@
 
                                   </ul>
 
-                                   <a class="btn btn-info btn-theme-colored btn-sm text-uppercase mt-10" href="{{url('/course_details/'.$wish_course->course_id)}}">Add To Cart</a>
+                               <!--      <form  action="" method="post"  enctype="">
+                                    </form>
+                                     -->
+                                   <a class="btn btn-info btn-theme-colored btn-sm text-uppercase mt-10" href="{{ url('/add_to_card_from_wish/'.$wish_course->course_id) }}">Add To Cart</a>
 
 
                                 </div>

@@ -8,6 +8,6 @@ class Card extends Model
 {
     protected $table = "cards";
 
-    protected $fillable = ['user_id' , 'course_id' , 'course_name' , 'course_price' , 'center_id'];
+    protected $fillable = ['customer_id' , 'course_id' , 'course_name' , 'course_price' , 'center_id'];
     
 }

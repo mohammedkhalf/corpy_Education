@@ -41,7 +41,7 @@
 		<div class="navbar-collapse collapse" id="navbar-mobile">
 			<ul class="nav navbar-nav">
 				<li><a class="sidebar-control sidebar-main-toggle hidden-xs"><i class="icon-paragraph-justify3"></i></a></li>
-
+<!-- 
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<i class="icon-git-compare"></i>
@@ -118,12 +118,12 @@
 							<a href="#" data-popup="tooltip" title="All activity"><i class="icon-menu display-block"></i></a>
 						</div>
 					</div>
-				</li>
+				</li> -->
 			</ul>
 
-			<p class="navbar-text">
+		<!-- 	<p class="navbar-text">
 				<span class="label bg-success">Online</span>
-			</p>
+			</p> -->
 
 			<div class="navbar-right">
 				<ul class="nav navbar-nav">
@@ -285,6 +285,61 @@
 						</div>
 					</li> -->
 
+
+				<?php
+
+					$latest_order = DB::table('orders')
+									->orderBy('created_at', 'desc')
+									->take(3)
+									->get();
+
+
+					// echo "<pre>"; print_r($latest_order); echo "</pre>"; die;
+
+
+
+
+				?>
+
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						<i class="icon-git-compare"></i>
+						<span class="visible-xs-inline-block position-right">Git updates</span>
+						<span class="badge bg-warning-400">3</span>
+					</a>
+					
+					<div class="dropdown-menu dropdown-content">
+						<div class="dropdown-content-heading">
+							Latest Orders
+							<ul class="icons-list">
+								<li><a href="#"><i class="icon-sync"></i></a></li>
+							</ul>
+						</div>
+
+						<ul class="media-list dropdown-content-body width-350">
+
+							@foreach($latest_order as $lat_order)
+								<li class="media">
+									<div class="media-left">
+										<a href="#" class="btn border-primary text-primary btn-flat btn-rounded btn-icon btn-sm"><img src="{{ url('backend/courses/UYRDwcVhTxvkfHPLAmRy.jpg') }}" width="100px" height="100px"></a>
+									</div>
+
+									<div class="media-body">
+										Order Code :: {{ $lat_order->order_code }}
+										<div class="media-annotation">By  ::{{$lat_order->customer_name  }}</div>
+									</div>
+								</li>
+							@endforeach
+
+							
+						</ul>
+
+						<div class="dropdown-content-footer">
+							<a href="#" data-popup="tooltip" title="All activity"><i class="icon-menu display-block"></i></a>
+						</div>
+					</div>
+				</li>
+
 					<li class="dropdown dropdown-user">
 						<a class="dropdown-toggle" data-toggle="dropdown">
 							<img src="assets/images/placeholder.jpg" alt="">
@@ -411,6 +466,15 @@
 										<li><a href="{{url('/view_sliders')}}">View Sliders</a></li>
 									</ul>
 								</li>
+
+								<!-- orders -->
+								<li>
+									<a href="{{ url('/manage_orders') }}">
+										<i class="fa fa-shopping-cart"></i> <span>Manage Orders</span>
+									</a>
+
+								</li>
+
 
 								
 

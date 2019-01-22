@@ -34,7 +34,7 @@ class CardController extends Controller
     						->first();
     		// echo "<pre>"; print_r($center_info->name); echo "</pre>"; die;
     		$new_card = new Card;
-    		$new_card->user_id = Auth::user()->id;
+    		$new_card->customer_id = Auth::user()->id;
     		$new_card->course_id = $course_id;
     		$new_card->center_name = $center_info->name;
     		$new_card->course_name = $course_info->course_name;
@@ -60,7 +60,7 @@ class CardController extends Controller
     {
         if(Auth::check())
         {
-            $card_items = Card::all();
+            $card_items = Card::where('customer_id' , Auth::user()->id)->get();
             return view('pages.card_content')->with('card_items',$card_items);
         }
         else

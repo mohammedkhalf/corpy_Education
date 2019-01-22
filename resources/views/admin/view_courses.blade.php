@@ -33,7 +33,7 @@
 						<h2><i class="halflings-icon user"></i><span class="break"></span>Courses</h2>
 					</div>
 					<div class="box-content">
-						<table id="my_table" class="display table table-striped table-bordered bootstrap-datatable ">
+						<table class="table table-striped table-bordered bootstrap-datatable datatable">
 						  <thead>
 							  <tr>
 <!-- 								  <th>Course ID</th>

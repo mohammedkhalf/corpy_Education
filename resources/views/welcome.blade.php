@@ -445,11 +445,12 @@
 
             <!-- Card Notification -->
             <?php
-                  $all_item = DB::table('cards')->get();
+                  $all_item = DB::table('cards')->where('customer_id' , Auth::id())->get();
                   $num_card = count($all_item);
 
 
-                  $all_wishs = DB::table('wishlists')->get();
+                  $all_wishs = DB::table('wishlists')->where('customer_id' , Auth::id())->get();
+
                   $num_wish = count($all_wishs);
             ?>
 

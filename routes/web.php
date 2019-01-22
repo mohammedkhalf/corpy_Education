@@ -11,15 +11,12 @@
 |
 */
 
-
-
 Route::get('/', function () {
 
     return view('pages.home_content');
 });
 
 Auth::routes();
-
 //admin backend urls
 Route::get('/admin_login' , 'AdminController@index');
 Route::any('/logout' , 'AdminController@logout');
@@ -76,6 +73,17 @@ Route::group(['middleware' =>['admin']] , function(){
 	Route::get('/unactive_slider/{slider_id}' , 'SliderController@unactive_slider');
 	Route::get('active_slider/{slider_id}','SliderController@active_slider');
 	Route::get('/delete_slider/{slider_id}' , 'SliderController@delete_slider');
+
+	//orders backend urls
+	Route::get('/manage_orders','OrderController@fetch_orders');
+	Route::get('/pind_order/{order_id}' , 'OrderController@pinding_order');
+	Route::get('/accept_order/{order_id}' , 'OrderController@accept_order');
+	
+	Route::get('/view_order/{order_id}' , 'OrderController@view_order');
+
+
+
+
 });
 
 //login Center/Traniee  Frontend Urls
@@ -120,3 +128,6 @@ Route::post('/purchase' , 'CheckoutController@purchase_courses');
 Route::get('/add_to_wishlist/{course_id}' , 'WishlistController@add_wishlist');
 //get wishlist courses
 Route::get('/wishlist_content' , 'WishlistController@get_wishlist');
+// add card from wishlist items
+Route::get('/add_to_card_from_wish/{course_id}' , 'WishlistController@add_card_table');
+

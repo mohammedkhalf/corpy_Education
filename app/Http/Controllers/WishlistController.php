@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Course;
 use App\User;
 use App\Wishlist;
+use App\Card;
 use Auth;
 use DB;
 use Session;
@@ -39,6 +40,34 @@ class WishlistController extends Controller
                             
         return view('pages.wishlist_content')->with('wish_courses' , $wish_courses);
     }
+
+    public function add_card_table (Request $request  , $course_id)
+    {   
+        $course_info = Course::find($course_id);
+        $center_id = $course_info->user_id;
+        $center_info = User::find($center_id);
+        $center_name = $center_info->name;
+
+        $card  = new Card;
+
+        $card->course_id = $course_info->course_id;
+        $card->customer_id = Auth::user()->id;
+        $card->course_name = $course_info->course_name;
+        $card->center_name = $center_name;
+        $card->course_level = $course_info->course_level;
+        $card->course_price = $course_info->course_price;
+        $card->course_image = $course_info->course_image;
+        $card->save();
+
+        DB::table('wishlists')
+            ->where('course_id' , $course_id)
+            ->delete();
+
+        $card_items = Card::all();
+        // echo "<pre>"; print_r($card_items); echo "</pre>"; die;
+        return view('pages.card_content')->with('card_items',$card_items);
+    }
+
 
 
 }

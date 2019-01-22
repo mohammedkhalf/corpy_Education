@@ -29,7 +29,7 @@
 						<h2><i class="halflings-icon user"></i><span class="break"></span>Sliders</h2>
 					</div>
 					<div class="box-content">
-						<table id="my_table" class="table table-striped table-bordered bootstrap-datatable datatable">
+						<table class="table table-striped table-bordered bootstrap-datatable datatable">
 						  <thead>
 							  <tr>
 								  <th>Slider ID</th>
